@@ -1,0 +1,62 @@
+# Fast API(Users query from Front End)
+# You are designing a framework for creating different types of Bank Loans (e.g., Home Loan, Car Loan, Personal Loan).
+
+# Defines  method get_interest_rate().
+# input string (e.g., "home" or "car").
+# Demonstrates usage by fetching the interest rate for a given loan type.
+
+
+ 
+import fastapi
+
+
+app = fastapi.FastAPI()
+
+
+admin_module = 
+interest_rates = {
+    "home": 6.5,
+    "car": 7.2,
+    "personal": 10.5,
+    "education": 5.0
+}
+
+#calution_home_loan based on year 
+
+
+def calution_home_loan_based_on_year(principal: float, years: int) -> float:
+    rate = interest_rates["home"]
+    interest = (principal * rate * years) / 100
+    return interest
+def calculation_based_on_civil_score(principal: float, civil_score: int) -> float:
+    if civil_score > 750:
+        rate = interest_rates["personal"] - 1.0  # Discount for good credit score
+    else:
+        rate = interest_rates["personal"]
+    interest = (principal * rate * 1) / 100  # Assuming 1 year for simplicity
+    return interest
+
+@app.get("/interest-rate/{loan_type}")
+def get_interest_rate(loan_type: str) -> float:
+    
+    return interest_rates.get(loan_type.lower(), 0.0)
+
+
+if __name__ == ma
+
+
+
+
+
+/src
+main.py
+.env
+Dockerfile
+/sevices_utils
+backend/
+/src/backend
+backend/ __init__.py
+backend/ admin_module.py
+backend/ loan_module.py => api to calcualte_loan_interest
+backend/ database_module.py
+backend/ utils.py

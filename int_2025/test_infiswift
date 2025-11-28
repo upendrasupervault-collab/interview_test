@@ -1,0 +1,25 @@
+Interview Problem: The Data Reconciliation Validator
+Context:
+We are migrating legacy user data from an old system (provided as a CSV) to a new system (accessible via a mock API endpoint). The migration script has run, but we suspect data corruption.
+The Task:
+Write a Python script that:
+Reads a local users.csv file (Source of Truth).
+Fetches current data from a (mock) API endpoint GET /users (Target).
+Compare the two datasets.
+Generates a Discrepancy Report listing exactly which users failed migration and why.
+Provided Inputs
+1. The CSV Data (Source of Truth)
+
+id,email,phone,status
+101, john.doe@example.com, +1-555-0100, active
+102, JANE.SMITH@WORK.ORG, 5550102, inactive
+103, bob.jones@tech.net, 555-0103, active
+
+2. The Mock API Response (Target Data)
+This JSON list is the data found in the new system.
+
+[
+  {"id": 101, "email": "john.doe@example.com", "phone": "5550100", "status": "active"},
+  {"id": 102, "email": "jane.smith@work.org", "phone": "555-0102", "status": "active"},
+  {"id": 104, "email": "alice@wonder.com", "phone": "5550199", "status": "active"}
+]
